@@ -149,7 +149,7 @@ jobs:
 
       - run: echo php "vendor/bin/phpunit" --version
       - run: grep --help
-      - run: echo "PHPUnit 10.5.35 " | grep --only-matching --max-count=1 --extended-regexp '\b[0-9]+\.[0-9]+')" >> $GITHUB_OUTPUT
+      - run: echo "PHPUnit 10.5.35 " | egrep --only-matching --max-count=1 '\b[0-9]+\.[0-9]+')" >> $GITHUB_OUTPUT
 
       - name: "Run unit tests (PHPUnit < 10)"
         if: ${{ ! startsWith( steps.phpunit_version.outputs.VERSION, '10.' ) }}
