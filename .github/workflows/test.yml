@@ -152,6 +152,8 @@ jobs:
         shell: bash
         run: echo "VERSION=$(echo vendor/bin/phpunit --version | grep --only-matching --max-count=1 --extended-regexp '[0-9]+\.[0-9]+')" >> $GITHUB_OUTPUT
 
+      - run: ${{steps.phpunit_version.outputs.VERSION}}
+
       - name: "Run unit tests (PHPUnit < 10)"
         if: ${{ ! startsWith( steps.phpunit_version.outputs.VERSION, '10.' ) }}
         run: composer test
