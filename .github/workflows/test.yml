@@ -150,7 +150,7 @@ jobs:
       - name: Grab PHPUnit version
         id: phpunit_version
         shell: bash
-        run: echo "VERSION=$(echo vendor/bin/phpunit --version | grep --only-matching --max-count=1 --extended-regexp '[0-9]+\.[0-9]+')" >> $GITHUB_OUTPUT
+        run: echo "VERSION=$(php vendor/bin/phpunit --version | grep --only-matching --max-count=1 --extended-regexp '[0-9]+\.[0-9]+')" >> $GITHUB_OUTPUT
 
       - run: ${{steps.phpunit_version.outputs.VERSION}}
 
