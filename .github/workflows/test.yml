@@ -101,10 +101,6 @@ jobs:
       matrix:
         include:
           # Also run the tests against Windows on a few PHP versions.
-          - php: '5.5'
-            os: 'windows-latest'
-          - php: '7.0'
-            os: 'windows-latest'
           - php: '8.0'
             os: 'windows-latest'
           - php: '8.3'
