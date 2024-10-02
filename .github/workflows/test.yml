@@ -150,15 +150,14 @@ jobs:
       - name: Grab PHPUnit version
         id: phpunit_version
         run: |
-          VER_STR=$(php 'vendor/bin/phpunit' --version)
-          echo "VERSION=$(echo $VER_STR | grep --only-matching --max-count=1 --extended-regexp '[0-9]+\.[0-9]+')" >> $GITHUB_OUTPUT
+          echo "VERSION=$(php 'vendor/bin/phpunit' --version)" >> $GITHUB_OUTPUT
 
       - name: "Run unit tests (PHPUnit < 10)"
-        if: ${{ ! startsWith( steps.phpunit_version.outputs.VERSION, '10.' ) }}
+        if: ${{ ! startsWith( steps.phpunit_version.outputs.VERSION, 'PHPUnit 10.' ) }}
         run: composer test
 
       - name: "Run unit tests (PHPUnit < 10)"
-        if: ${{ startsWith( steps.phpunit_version.outputs.VERSION, '10.' ) }}
+        if: ${{ startsWith( steps.phpunit_version.outputs.VERSION, 'PHPUnit 10.' ) }}
         run: composer test10
 
       - uses: actions/download-artifact@v4
